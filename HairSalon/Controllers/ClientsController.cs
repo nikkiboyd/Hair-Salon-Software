@@ -32,9 +32,9 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/clients")]
-        public ActionResult SaveClient(int clientStylist, string clientName, string clientPhone, string clientEmail)
+        public ActionResult SaveClient(int stylistId, string clientName, string clientPhone, string clientEmail)
         {
-            Client newClient = new Client(clientStylist, clientName, clientPhone, clientEmail);
+            Client newClient = new Client(stylistId, clientName, clientPhone, clientEmail);
             newClient.Save();
             return RedirectToAction("Details", new { id = newClient.Id });
         }
