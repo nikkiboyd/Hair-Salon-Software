@@ -28,18 +28,8 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists/{id}")]
         public ActionResult Details(int id)
         {
-            Stylist currentStylist = Stylist.Find(id);
-            //List<Client> allStylistClients = new List<Client> { };
-            //allStylistClients = Stylist.GetClientsByStylist(id);
+            Stylist currentStylist = Client.Find(id);
             return View(currentStylist);
-        }
-
-        [HttpPost("/stylists/{id}")]
-        public ActionResult GetClients(int id)
-        {
-            List<Client> allStylistClients = new List<Client> { };
-            allStylistClients = Stylist.GetClientsByStylist(id);
-            return View("Details", allStylistClients)
         }
     }
 }

@@ -48,7 +48,7 @@ namespace HairSalon.Models
             cmd.ExecuteNonQuery();
         }
 
-        public List<Client> GetClientsByStylist(int sId)
+        public static List<Client> GetClientsByStylist(int sId)
         {
             List<Client> allClientsByStylist = new List<Client> { };
             MySqlConnection conn = DB.Connection();

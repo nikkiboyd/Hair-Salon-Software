@@ -4,11 +4,6 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1>@Model.StylistName</h1>
+        @Model.StylistName;
     </div>
-
-    @foreach (var client in Model)
-    {
-        <li>@client.Name</li>
-    }
 </div>
