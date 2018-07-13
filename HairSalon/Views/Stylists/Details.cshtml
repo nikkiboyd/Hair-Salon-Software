@@ -1,11 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "All Clients";
+    ViewData["Title"] = "Stylist Details";
 }
 
 <div class="container">
     <div class="jumbotron">
         <h1>@Model.StylistName</h1>
     </div>
-
-
+    <a href="/stylists/@Model.StylistId/clients" class="btn btn-info">View Clients</a>
 </div>

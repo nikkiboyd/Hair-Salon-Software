@@ -31,12 +31,20 @@ namespace HairSalon.Controllers
             return View();
         }
 
-        //[HttpGet("/stylists/{id}")]
-        //public ActionResult Details(int id)
-        //{
-        //    Stylist currentStylist = Stylist.Find(id);
-        //    List<Client> clientList = currentStylist.GetClientsByStylist(id);
-        //    return View(currentStylist);
-        //}
+        [HttpGet("/stylists/{id}")]
+        public ActionResult Details(int id)
+        {
+            Stylist currentStylist = Stylist.Find(id);
+            return View(currentStylist);
+        }
+
+        [HttpGet("/stylists/{id}/clients")]
+        public ActionResult Clients(int id)
+        {
+            Stylist currentStylist = Stylist.Find(id);
+            List<Client> stylistClients = new List<Client> { };
+            stylistClients = Stylist.GetClientsByStylist(currentStylist.StylistId);
+            return View(stylistClients);
+        }
     }
 }
