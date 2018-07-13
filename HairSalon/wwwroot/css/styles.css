@@ -8,3 +8,34 @@
 .btn {
     margin: 10px;
 }
+
+.card {
+   margin-top: 50px;
+   text-align: center;
+   width: 700px;
+   border: none;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+:-moz-placeholder {
+    text-align: center;
+}
+
+::-moz-placeholder {
+    text-align: center;
+}
+
+:-ms-input-placeholder {
+    text-align: center;
+}
+
+select {
+    text-align-last: center;
+}
+
+input {
+    text-align: center;
+}

@@ -10,30 +10,32 @@
 else
 {
     <form method="post" action="/clients">
-        <div class="form-group">
-            <label for="formGroupExampleInput">Client Name</label>
-            <input type="text" name="clientName" class="form-control" id="formGroupExampleInput" placeholder="Jane Doe" required>
-        </div>
+        <div class="card center">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Client Name</label>
+                <input type="text" name="clientName" class="form-control" id="formGroupExampleInput" placeholder="Jane Doe" required>
+            </div>
 
-        <div class="form-group">
-            <label for="formGroupExampleInput">Client Phone</label>
-            <input type="text" name="clientPhone" class="form-control" id="formGroupExampleInput" placeholder="(503)-123-4567" required>
-        </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Client Phone</label>
+                <input type="text" name="clientPhone" class="form-control" id="formGroupExampleInput" placeholder="(503)-123-4567" required>
+            </div>
 
-        <div class="form-group">
-            <label for="formGroupExampleInput">Client Email</label>
-            <input type="text" name="clientEmail" class="form-control" id="formGroupExampleInput" placeholder="jane.doe@gmail.com" required>
-        </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Client Email</label>
+                <input type="text" name="clientEmail" class="form-control" id="formGroupExampleInput" placeholder="jane.doe@gmail.com" required>
+            </div>
 
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Stylist</label>
-            <select name="stylistId" class="form-control" required>
-                @foreach (var stylist in Model)
-                {
-                    <option value="@stylist.StylistId">@stylist.StylistName</option>
-                }
-            </select>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Stylist</label>
+                <select name="stylistId" class="form-control" required>
+                    @foreach (var stylist in Model)
+                    {
+                        <option value="@stylist.StylistId">@stylist.StylistName</option>
+                    }
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Add Client</button>
         </div>
-        <button class="btn btn-primary" type="submit">Add Client</button>
     </form>
 }

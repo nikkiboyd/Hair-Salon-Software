@@ -1,15 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Client Details";
 }
+<div>
+    <br />
+    <h1>@Model.Name</h1>
+    <br /><br />
+    <h3>Phone:</h3>
+    <p>@Model.Phone</p>
+    <br>
+    <h3>Email:</h3>
+    <p>@Model.Email</p>
 
-<h1>@Model.Name</h1>
-<h3>Phone:</h3>
-<p>@Model.Phone</p>
-<br>
-<h3>Email:</h3>
-<p>@Model.Email</p>
-
-<form action="/clients/@Model.Id/delete" method="post">
-    <button type="submit" class="btn btn-danger">Remove Client</button>
-</form>
-<a href="/clients/@Model.Id/update" class="btn btn-info">Update Details</a>
+    <form action="/clients/@Model.Id/delete" method="post">
+        <button type="submit" class="btn btn-danger">Remove Client</button>
+    </form>
+    <a href="/clients/@Model.Id/update" class="btn btn-info">Update Details</a>
+</div>
