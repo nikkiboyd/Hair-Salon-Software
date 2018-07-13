@@ -6,16 +6,11 @@ using System.Collections.Generic;
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class StylistTests : IDisposable
+    public class StylistTests
     {
         public StylistTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=nikki_boyd_test;";
-        }
-
-        public void Dispose()
-        {
-            Stylist.DeleteAll();
         }
 
         [TestMethod]
@@ -42,6 +37,34 @@ namespace HairSalon.Tests
             List<Client> result = newStylist.GetClientsByStylist(1);
 
             CollectionAssert.AreEqual(testClientList, result);
+        }
+
+        [TestMethod]
+        public void GetAll_GetsAllStylistsFromDatabase_StylistList()
+        {
+            int result = Stylist.GetAll().Count;
+            Assert.AreEqual(8, result);
+        }
+
+        [TestMethod]
+        public void Find_FindsStylistInDatabase_Stylist()
+        {
+            Stylist foundStylist = Stylist.Find(1);
+            string name = foundStylist.StylistName;
+
+            Assert.AreEqual("Margot Tenenbaum", name);
+        }
+
+        [TestMethod]
+        public void Save_SavesToDatabase_ClientList()
+        {
+            Stylist newStylist = new Stylist(1, "test name");
+
+            newStylist.Save();`
+            int result = Stylist.GetAll().Count;
+            List<Stylist> testStylistList = new List<Stylist> { newStylist };
+
+            Assert.AreEqual(9, result);
         }
     }
 }
