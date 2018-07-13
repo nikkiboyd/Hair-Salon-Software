@@ -1,5 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "All Clients";
 }
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>@Model.StylistName</h1>
+    </div>
+
+    @foreach (var client in Model)
+    {
+        <li>@client.Name</li>
+    }
+</div>
