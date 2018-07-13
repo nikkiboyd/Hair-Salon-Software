@@ -9,10 +9,11 @@ namespace HairSalon.Models
     {
         public int StylistId { get; set; }
         public string StylistName { get; set; }
-    }
-        public Stylist()
+
+        public Stylist(string name, int stylistId)
         {
-            
+            StylistName = name;
+            StylistId = stylistId;
         }
     }
 }

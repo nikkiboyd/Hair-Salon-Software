@@ -12,4 +12,10 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.1.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ModelsTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HairSalon\HairSalon.csproj" />
+  </ItemGroup>
 </Project>

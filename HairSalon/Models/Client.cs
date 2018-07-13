@@ -22,5 +22,40 @@ namespace HairSalon.Models
             Email = email;
             Id = id;
         }
+
+        public override bool Equals(System.Object otherClient)
+        {
+            if (!(otherClient is Client))
+            {
+                return false;
+            }
+            else
+            {
+                Client newClient = (Client)otherClient;
+                bool stylistIdEquality = (this.StylistId == newClient.StylistId);
+                bool nameEquality = (this.Name == newClient.Name);
+                bool phoneEquality = (this.Phone == newClient.Phone);
+                bool emailEquality = (this.Email == newClient.Email);
+                bool idEquality = (this.Id == newClient.Id);
+
+                return (stylistIdEquality && nameEquality && phoneEquality && emailEquality && idEquality);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Name.GetHashCode();
+        }
+
+        public static void DeleteAll()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM clients;";
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
