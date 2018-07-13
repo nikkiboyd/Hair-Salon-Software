@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <Folder Include="ModelsTests\" />
+    <Folder Include="ControllerTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HairSalon\HairSalon.csproj" />
