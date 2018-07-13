@@ -27,5 +27,12 @@ namespace HairSalon.Tests
 
             Assert.AreEqual(firstClient, secondClient);
         }
+
+        [TestMethod]
+        public void GetAll_DbStartsEmpty_0()
+        {
+            int result = Client.GetAll().Count;
+            Assert.AreEqual(0, result);
+        }
     }
 }
