@@ -17,14 +17,6 @@ namespace HairSalon.Controllers
             return View(allClients);
         }
 
-        //[HttpPost("/clients")]
-        //public ActionResult SaveClient(int stylistId, string name, string phone, string email)
-        //{
-        //    Client newClient = new Client(stylistId, name, phone, email);
-        //    newClient.Save();
-        //    return RedirectToAction("Details", new { id = newClient.Id });
-        //}
-
         [HttpGet("/clients/new")]
         public ActionResult Create()
         {
@@ -44,6 +36,19 @@ namespace HairSalon.Controllers
         {
             Client currentClient = Client.Find(id);
             return View(currentClient);
+        }
+
+        [HttpGet("/clients/delete")]
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost("/clients/delete")]
+        public ActionResult DeleteAll()
+        {
+            Client.DeleteAll();
+            return RedirectToAction("Index");
         }
     }
 }

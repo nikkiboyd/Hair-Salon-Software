@@ -22,5 +22,9 @@
   <ItemGroup>
     <Content Remove="Views\Home\About.cshtml" />
     <Content Remove="Views\Home\Contact.cshtml" />
+    <Content Remove="wwwroot\css\styles.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\css\styles.css" />
   </ItemGroup>
 </Project>
