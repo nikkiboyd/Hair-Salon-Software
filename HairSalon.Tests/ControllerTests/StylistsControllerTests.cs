@@ -33,6 +33,5 @@ namespace HairSalon.Tests.ControllerTests
             var result = indexView.ViewData.Model;
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
-
     }
 }
