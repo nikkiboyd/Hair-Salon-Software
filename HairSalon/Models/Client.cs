@@ -84,5 +84,27 @@ namespace HairSalon.Models
             }
             return allClients;
         }
+
+        public void Save()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO clients (stylist_id, name, phone, email) VALUES (@ClientStylistId, @ClientName, @ClientPhone, @ClientEmail);";
+
+            cmd.Parameters.AddWithValue("@ClientStylistId", this.StylistId);
+            cmd.Parameters.AddWithValue("@ClientName", this.Name);
+            cmd.Parameters.AddWithValue("@ClientPhone", this.Phone);
+            cmd.Parameters.AddWithValue("@ClientEmail", this.Email);
+
+            cmd.ExecuteNonQuery();
+            this.Id = (int)cmd.LastInsertedId;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
     }
 }
