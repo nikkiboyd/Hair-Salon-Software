@@ -16,5 +16,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Stylists\" />
+    <Folder Include="Views\Clients\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\About.cshtml" />
+    <Content Remove="Views\Home\Contact.cshtml" />
   </ItemGroup>
 </Project>
