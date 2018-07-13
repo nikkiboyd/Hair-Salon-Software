@@ -21,10 +21,10 @@
     <div class="form-group">
         <label for="formGroupExampleInput2">Stylist</label>
         <select name="stylistId" class="form-control" required>
-            <option name="stylistId" value="1">Margot Tenenbaum</option>
-            <option name="stylistId" value="2">Lina Shadrach</option>
-            <option name="stylistId" value="3">Jonathan Van Ness</option>
-            <option name="stylistId" value="4">Nikki Boyd</option>
+            @foreach (var stylist in Model)
+            {
+            <option value="@stylist.StylistId">@stylist.StylistName</option>
+            }
         </select>
     </div>
     <button class="btn btn-primary" type="submit">Add Client</button>

@@ -28,7 +28,7 @@ namespace HairSalon.Controllers
         [HttpGet("/clients/new")]
         public ActionResult Create()
         {
-            return View();
+            return View(Stylist.GetAll());
         }
 
         [HttpPost("/clients")]
