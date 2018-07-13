@@ -57,5 +57,14 @@ namespace HairSalon.Tests
 
             Assert.AreEqual(newClient, foundClient);
         }
+
+        [TestMethod]
+        public void Update_UpdatesClientNameInDatabase_Client()
+        {
+            Client newClient = new Client(1, "test name", "test phone", "test email", 0);
+            newClient.Save();
+            newClient.Update(1, "new name", "test phone", "test email", 0);
+            Assert.AreEqual(newClient.Name, "new name");
+        }
     }
 }
