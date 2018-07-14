@@ -167,26 +167,5 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
         }
-
-        public void Update(string stylistName, int stylistId)
-        {
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE stylists SET name = @StylistName WHERE id = @StylistId;";
-
-            cmd.Parameters.AddWithValue("@StylistId", stylistId);
-            cmd.Parameters.AddWithValue("@StylistName", stylistName);
-
-            cmd.ExecuteNonQuery();
-            StylistId = stylistId;
-            StylistName = stylistName;
-
-            conn.Close();
-            if (conn != null)
-            {
-                conn.Dispose();
-            }
-        }
     }
 }
