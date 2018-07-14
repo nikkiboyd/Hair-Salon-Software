@@ -10,7 +10,7 @@ namespace HairSalon.Models
         public int StylistId { get; set; }
         public string StylistName { get; set; }
 
-        public Stylist(int stylistId, string stylistName)
+        public Stylist(string stylistName, int stylistId = 0)
         {
             StylistName = stylistName;
             StylistId = stylistId;
@@ -89,7 +89,7 @@ namespace HairSalon.Models
             {
                 int stylistId = rdr.GetInt32(0);
                 string stylistName = rdr.GetString(1);
-                Stylist newStylist = new Stylist(stylistId, stylistName);
+                Stylist newStylist = new Stylist(stylistName);
                 allStylists.Add(newStylist);
             }
 
@@ -122,7 +122,7 @@ namespace HairSalon.Models
                 StylistId = rdr.GetInt32(0);
                 StylistName = rdr.GetString(1);
             }
-            Stylist newStylist = new Stylist(StylistId, StylistName);
+            Stylist newStylist = new Stylist(StylistName);
             conn.Close();
             if (conn != null)
             {
@@ -167,8 +167,8 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
         }
-        
-        public void Update(int stylistId, string stylistName)
+
+        public void Update(string stylistName, int stylistId)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
