@@ -6,8 +6,13 @@ using System.Collections.Generic;
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class StylistTests
+    public class StylistTests : IDisposable
     {
+        public void Dispose()
+        {
+            Stylist.DeleteAll();
+        }
+
         public StylistTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=nikki_boyd_test;";
@@ -39,13 +44,12 @@ namespace HairSalon.Tests
             CollectionAssert.AreEqual(testClientList, result);
         }
 
-        //Test Passes - However, must change expected number as database count changes
-        //[TestMethod]
-        //public void GetAll_GetsAllStylistsFromDatabase_StylistList()
-        //{
-        //    int result = Stylist.GetAll().Count;
-        //    Assert.AreEqual(8, result);
-        //}
+        [TestMethod]
+        public void GetAll_GetsAllStylistsFromDatabase_StylistList()
+        {
+            int result = Stylist.GetAll().Count;
+            Assert.AreEqual(0, result);
+        }
 
         [TestMethod]
         public void Find_FindsStylistInDatabase_Stylist()
@@ -57,18 +61,17 @@ namespace HairSalon.Tests
             Assert.AreEqual(newStylist, result);
         }
 
-        //Test Passes - However, must change expected number as database count changes
-        //[TestMethod]
-        //public void Save_SavesToDatabase_ClientList()
-        //{
-        //    Stylist newStylist = new Stylist(1, "test name");
+        [TestMethod]
+        public void Save_SavesToDatabase_ClientList()
+        {
+            Stylist newStylist = new Stylist("test name");
 
-        //    newStylist.Save();
-        //    int result = Stylist.GetAll().Count;
-        //    List<Stylist> testStylistList = new List<Stylist> { newStylist };
+            newStylist.Save();
+            int result = Stylist.GetAll().Count;
+            List<Stylist> testStylistList = new List<Stylist> { newStylist };
 
-        //    Assert.AreEqual(9, result);
-        //}
+            Assert.AreEqual(1, result);
+        }
 
         [TestMethod]
         public void Update_UpdatesStylistInDatabase_UpdatedStylist()
@@ -78,6 +81,21 @@ namespace HairSalon.Tests
             newStylist.Update("Nikki Boyd");
             string result = Stylist.Find(newStylist.StylistId).StylistName;
             Assert.AreEqual(result, "Nikki Boyd");
+        }
+
+        [TestMethod]
+        public void Delete_DeletesSingleStylistFromDatabase_FirstStylist()
+        {
+            Stylist firstStylist = new Stylist("Margot Tenenbaum");
+            firstStylist.Save();
+            Stylist secondStylist = new Stylist("Nikki Boyd");
+            secondStylist.Save();
+            firstStylist.Delete();
+
+            List<Stylist> stylistList = new List<Stylist> { secondStylist };
+            List<Stylist> result = new List<Stylist> { secondStylist };
+
+            CollectionAssert.AreEqual(result, stylistList);
         }
     }
 }
