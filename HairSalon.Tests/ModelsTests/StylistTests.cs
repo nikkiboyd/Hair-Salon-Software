@@ -69,5 +69,15 @@ namespace HairSalon.Tests
 
         //    Assert.AreEqual(9, result);
         //}
+
+        [TestMethod]
+        public void Update_UpdatesStylistInDatabase_UpdatedStylist()
+        {
+            Stylist newStylist = new Stylist("Margot Tenenbaum");
+            newStylist.Save();
+            newStylist.Update("Nikki Boyd");
+            string result = Stylist.Find(newStylist.StylistId).StylistName;
+            Assert.AreEqual(result, "Nikki Boyd");
+        }
     }
 }
