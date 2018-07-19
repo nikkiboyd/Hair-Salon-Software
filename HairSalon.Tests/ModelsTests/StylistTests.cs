@@ -16,8 +16,8 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Equals_ReturnsTrueIfStylitsAreTheSame_True()
         {
-            Stylist firstStylist = new Stylist(1, "test name");
-            Stylist secondStylist = new Stylist(1, "test name");
+            Stylist firstStylist = new Stylist("test name");
+            Stylist secondStylist = new Stylist("test name");
 
             Assert.AreEqual(firstStylist, secondStylist);
         }
@@ -25,7 +25,7 @@ namespace HairSalon.Tests
         [TestMethod]
         public void GetClients_RetrievesAllClientsByStylist_ClientList()
         {
-            Stylist newStylist = new Stylist(1, "Margot Tenenbaum");
+            Stylist newStylist = new Stylist("Margot Tenenbaum");
 
             Client firstClient = new Client(1, "test name", "test phone", "test email");
             firstClient.Save();
@@ -50,10 +50,11 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Find_FindsStylistInDatabase_Stylist()
         {
-            Stylist foundStylist = Stylist.Find(1);
-            string name = foundStylist.StylistName;
+            Stylist newStylist = new Stylist("Margot Tenenbaum");
+            newStylist.Save();
+            Stylist result = Stylist.Find(newStylist.StylistId);
 
-            Assert.AreEqual("Margot Tenenbaum", name);
+            Assert.AreEqual(newStylist, result);
         }
 
         //Test Passes - However, must change expected number as database count changes
