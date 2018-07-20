@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>@Model["specialty"].SpecialtyType</h1>
+    </div>
+
+    @foreach (var stylist in Model["stylists"])
+    {
+        <h3>@stylist.StylistName</h3>
+    }
+
+    <form action="/specialty/@Model["specialty"].SpecialtyId/delete" method="post">
+        <button type="submit" class="btn btn-danger">Remove Specialty</button>
+    </form>
+</div>
