@@ -51,5 +51,18 @@ namespace HairSalon.Tests
             List<Specialty> specialtyList = new List<Specialty> { newSpecialty };
             Assert.AreEqual(1, result);
         }
+
+        [TestMethod]
+        public void Delete_DeletesSingleStylistFromDatabase_FirstStylist()
+        {
+            Specialty firstSpecialty = new Specialty("Balayage");
+            firstSpecialty.Save();
+            Specialty secondSpecialty = new Specialty("Bleach");
+            secondSpecialty.Save();
+            firstSpecialty.Delete();
+            List<Specialty> specialtyList = new List<Specialty> { secondSpecialty };
+            List<Specialty> result = new List<Specialty> { secondSpecialty };
+            CollectionAssert.AreEqual(result, specialtyList);
+        }
     }
 }
