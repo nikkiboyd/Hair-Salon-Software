@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>@Model["stylist"].StylistName's New Specialty</h1>
+    </div>
+
+    <form method="post" action="/stylists/@Model["stylist"].StylistId/add-specialty/confirm">
+        <div class="form-group">
+            <label for="specialty">Stylist</label>
+            <select name="specialty" class="form-control" required>
+                @foreach (var specialty in Model["specialties"])
+                {
+                <option value="@specialty.SpecialtyId">@specialty.SpecialtyType</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Add Specialty</button>
+    </form>
+</div>
