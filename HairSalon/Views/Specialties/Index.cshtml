@@ -10,19 +10,19 @@
     </div>
     @if (Model.Count == 0)
     {
-    <h1>We do not have any clients at this time.</h1>
-    <a href="/clients/new" class="btn btn-success">Add New Client</a>
+    <h1>We do not have any specialties at this time.</h1>
+    <a href="/specialties/new" class="btn btn-success">Add New Specialty</a>
     }
     else
     {
     <ul>
-        @foreach (var client in Model)
+        @foreach (var specialty in Model)
         {
-        <h3>@client.Name <a href="/clients/@client.Id" class="btn btn-sm btn-info">Manage</a></h3>
+        <h3>@specialty.SpecialtyType <a href="/specialties/@specialty.SpecialtyId" class="btn btn-sm btn-info">View Details</a></h3>
         }
     </ul>
     }
 
-    <a href="/clients/new" class="btn btn-success">Add New Client</a>
-    <a href="/clients/delete" class="btn btn-danger">Delete All Clients</a>
+    <a href="/specialties/new" class="btn btn-success">Add New Specialty</a>
+    <a href="/specialties/delete" class="btn btn-danger">Delete All Specialties</a>
 </div>
