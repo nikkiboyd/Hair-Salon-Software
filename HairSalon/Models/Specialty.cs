@@ -69,7 +69,7 @@ namespace HairSalon.Models
             cmd.CommandText = @"SELECT stylists.* FROM specialties
                                 JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id)
                                 JOIN stylists ON (stylists_specialties.stylist_id = stylists.id)
-                                WHERE specialty_id = @SpecialtyId;";
+                                WHERE specialties.id = @SpecialtyId;";
 
             cmd.Parameters.AddWithValue("@SpecialtyId", this.SpecialtyId);
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
@@ -135,6 +135,26 @@ namespace HairSalon.Models
             cmd.ExecuteNonQuery();
             this.SpecialtyId = (int)cmd.LastInsertedId;
 
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public void AssignStylist(Stylist newStylist)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO stylists_specialties(stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
+
+            cmd.Parameters.AddWithValue("@StylistId", newStylist.StylistId);
+            cmd.Parameters.AddWithValue("@SpecialtyId", this.SpecialtyId);
+
+            cmd.ExecuteNonQuery();
+            SpecialtyId = (int)cmd.LastInsertedId;
             conn.Close();
             if (conn != null)
             {
