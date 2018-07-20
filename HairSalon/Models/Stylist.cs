@@ -77,7 +77,7 @@ namespace HairSalon.Models
             return allClientsByStylist;
         }
 
-        public static List<Specialty> GetSpecialtiesByStylist(int id)
+        public List<Specialty> GetSpecialtiesByStylist()
         {
             List<Specialty> allSpecialtiessByStylist = new List<Specialty> { };
             MySqlConnection conn = DB.Connection();
@@ -86,9 +86,9 @@ namespace HairSalon.Models
             cmd.CommandText = @"SELECT specialties.* FROM stylists
                                 JOIN stylists_specialties ON (stylists.id = stylists_specialties.stylist_id)
                                 JOIN specialties ON (stylists_specialties.specialty_id = specialties.id)
-                                WHERE specialty_id = @SpecialtyId;";
+                                WHERE stylist_id = @StylistId;";
             
-            cmd.Parameters.AddWithValue("@SpecialtyId", id);
+            cmd.Parameters.AddWithValue("@StylistId", this.StylistId);
 
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
