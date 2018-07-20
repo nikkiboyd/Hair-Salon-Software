@@ -1,0 +1,14 @@
+﻿@*
+*@
+@{
+}
+
+<div class="card center">
+    <form method="post" action="/stylists/@Model.StylistId/update">
+        <div class="form-group">
+            <label for="newName">Stylist Name</label>
+            <input type="text" name="newName" class="form-control" id="newName" placeholder="@Model.StylistName" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Update Employee Details</button>
+    </form>
+</div>
