@@ -69,9 +69,10 @@ namespace HairSalon.Models
             cmd.CommandText = @"SELECT stylists.* FROM specialties
                                 JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id)
                                 JOIN stylists ON (stylists_specialties.stylist_id = stylists.id)
-                                WHERE specialties.id = @SpecialtyId;";
+                                WHERE specialty_id = @SpecialtyId;";
 
             cmd.Parameters.AddWithValue("@SpecialtyId", this.SpecialtyId);
+
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
 
             List<Stylist> allStylists = new List<Stylist> { };
@@ -154,7 +155,7 @@ namespace HairSalon.Models
             cmd.Parameters.AddWithValue("@SpecialtyId", this.SpecialtyId);
 
             cmd.ExecuteNonQuery();
-            SpecialtyId = (int)cmd.LastInsertedId;
+
             conn.Close();
             if (conn != null)
             {

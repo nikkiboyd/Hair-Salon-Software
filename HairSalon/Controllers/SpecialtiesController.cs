@@ -54,9 +54,9 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/specialties/{id}/assign-stylist")]
-        public IActionResult AssignSpecialty(int stylistId, int id)
+        public IActionResult AssignSpecialty(int assignedStylist, int id)
         {
-            Stylist newStylist = Stylist.Find(stylistId);
+            Stylist newStylist = Stylist.Find(assignedStylist);
             Specialty newSpecialty = Specialty.Find(id);
             newSpecialty.AssignStylist(newStylist);
             return RedirectToAction("Details");
