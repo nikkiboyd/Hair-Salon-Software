@@ -4,11 +4,19 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1>@Model.StylistName</h1>
+        <h1>@Model["stylist"].StylistName</h1>
     </div>
-    <a href="/stylists/@Model.StylistId/clients" class="btn btn-info">View Clients</a>
-    <a href="/stylists/@Model.StylistId/update" class="btn btn-info">Update Details</a>
-    <form action="/stylists/@Model.StylistId/delete" method="post">
+
+    <h1>Specialties:</h1>
+    @foreach (var specialty in @Model["specialties"])
+    {
+        <br />
+        <h3>@specialty.SpecialtyType</h3>
+    }
+
+    <a href="/stylists/@Model["stylist"].StylistId/clients" class="btn btn-info">View Clients</a>
+    <a href="/stylists/@Model["stylist"].StylistId/update" class="btn btn-info">Update Details</a>
+    <form action="/stylists/@Model["stylist"].StylistId/delete" method="post">
         <button type="submit" class="btn btn-danger">Terminate Stylist</button>
     </form>
 </div>
