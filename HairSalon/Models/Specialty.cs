@@ -37,6 +37,17 @@ namespace HairSalon.Models
             return this.SpecialtyType.GetHashCode();
         }
 
+        public static void DeleteAll()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialties;";
+
+            cmd.ExecuteNonQuery();
+        }
+
         public static List<Specialty> GetAll()
         {
             List<Specialty> allSpecialties = new List<Specialty> { };
