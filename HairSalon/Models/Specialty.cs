@@ -90,5 +90,24 @@ namespace HairSalon.Models
             }
             return foundSpecialty;
         }
+
+        public void Save()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO specialties (type) VALUES (@SpecialtyType);";
+
+            cmd.Parameters.AddWithValue("@SpecialtyType", this.SpecialtyType);
+
+            cmd.ExecuteNonQuery();
+            this.SpecialtyId = (int)cmd.LastInsertedId;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
     }
 }
