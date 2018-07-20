@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>All Specialties</h1>
+    </div>
+    @if (Model.Count == 0)
+    {
+    <h1>We do not have any clients at this time.</h1>
+    <a href="/clients/new" class="btn btn-success">Add New Client</a>
+    }
+    else
+    {
+    <ul>
+        @foreach (var client in Model)
+        {
+        <h3>@client.Name <a href="/clients/@client.Id" class="btn btn-sm btn-info">Manage</a></h3>
+        }
+    </ul>
+    }
+
+    <a href="/clients/new" class="btn btn-success">Add New Client</a>
+    <a href="/clients/delete" class="btn btn-danger">Delete All Clients</a>
+</div>

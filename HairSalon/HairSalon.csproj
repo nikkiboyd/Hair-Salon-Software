@@ -18,6 +18,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Stylists\" />
     <Folder Include="Views\Clients\" />
+    <Folder Include="Views\Specialties\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\About.cshtml" />
