@@ -25,5 +25,12 @@ namespace HairSalon.Tests
             Specialty secondSpecialty = new Specialty("test specialty");
             Assert.AreEqual(firstSpecialty, secondSpecialty);
         }
+
+        [TestMethod]
+        public void GetAll_GetsAllSpecialtiesFromDatabase_List()
+        {
+            int result = Specialty.GetAll().Count;
+            Assert.AreEqual(0, result);
+        }
     }
 }
