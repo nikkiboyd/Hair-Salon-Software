@@ -1,6 +1,6 @@
-# _Perfect Hair Forever_
+# _Snappy Snips_
 
-#### _Perfect Hair Forever | July 13, 2018_
+#### _Snappy Snips | July 20, 2018_
 
 #### By _**Nikki Boyd**_
 
@@ -11,31 +11,38 @@ This app was built for Perfect Hair Forever's employees to help manage all clien
 - Review a list of all clients for each stylist
 - Batch remove remove all employees and clients
 - Delete or update details for individual employees and clients
+- Create and assign specialties to stylists
 
 ## Specifications
 
-- Employees can view a list of all stylists.
-- Employees can select a stylist, see their details (name), and view all of their individual clients.
-- Employees can add new stylists to the system as they are hired.
-- Employees can add new clients and assign them to a specific stylists via a dropdown selection. They may enter the client's name, phone, and email.
-- Employees can delete all stylists from the database.
+Employees can utilize the following features:
+- View a list of all stylists, clients, and specialties.
+- View a specific stylist's personal details, their clients, and specialties.
+- Add new stylists to the system as they are hired.
+- Add new clients and assign a stylist to them.
+- Update a client's name, stylist, phone number, or email address.
+- Delete all or just one stylist from the database.
+- Delete all or just one client from the database.
+- Add a specialty and view all specialties that have been added.
+- Add a specialty to a stylist OR a stylist to a specialty.
 
-## Setup/Installation Requirements
+## Setup Instructions
 
 * _1. Clone the master branch of "hair-salon" from this repository: (https://github.com/nikkiboyd/hair-salon)_
 * _2. Ensure .NET Core 1.1 is installed on your machine._
 * _3. Ensure Mono is installed on your machine._
-* _4. If not running from Visual Studio, please run the command "dotnet restore" in Terminal to refresh packages._
-*_5. Tests are located in the file "WordCounter.Tests". All tests for both controllers and models are currently in passing state.
-*_6. Terminal instructions for recreating database:
-      > CREATE DATABASE nikki_boyd;
-      > USE nikki_boyd;
-      > CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));
-      > CREATE TABLE clients (stylist_id int(11), name VARCHAR(255), phone VARCHAR(255), email VARCHAR(255));
+* _4. Run the command `dotnet restore` to refresh packages._
+* _5. Tests can be found in the folder "HairSalon.Tests"._
+* _6. Import the provided database files to MAMP, or perform the following in Terminal:_
+
+      * `CREATE DATABASE nikki_boyd;`
+      * `USE nikki_boyd;`
+      * `CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));`
+      * `CREATE TABLE clients (stylist_id int(11), name VARCHAR(255), phone VARCHAR(255), email VARCHAR(255));`
 
 ## Known Bugs
 
-_Delete and update features are not yet implemented, despite the buttons being present. This fix will be implemented over the weekend._
+_There are no known bugs at this time._
 
 ## Support and contact details
 
@@ -43,7 +50,7 @@ _Please reach out to Nikki Boyd at boyd.nikki@icloud.com if you experience diffi
 
 ## Technologies Used
 
-_This console app was made with C#, HTML, CSS, and Bootstrap._
+_This application is built with C#, HTML, CSS, and Bootstrap._
 
 ### License
 
