@@ -6,7 +6,7 @@
 
 ## Description
 
-This app was built for Perfect Hair Forever's employees to help manage all clients and stylists. It allows employees to:
+This app was built for Snappy Snips employees to help manage all clients and stylists. It allows employees to:
 - Add and update contact details for their clients
 - Review a list of all clients for each stylist
 - Batch remove remove all employees and clients
